@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Folio AM · Edition studio</title>
+    <meta
+      name="description"
+      content="Build your personal morning paper. Choose sources, shape your edition, and print a clearer day."
+    />
+    <link rel="icon" href="/folio-mark.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/app.css" />
+    <link rel="stylesheet" href="/studio-folio.css" />
+    <script type="module" src="/app.mjs"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#panel">Skip to editor</a>
+    <header class="app-header">
+      <a class="brand" href="/" aria-label="Folio AM home"
+        ><span class="brand-icon" aria-hidden="true">f.</span
+        ><span>FOLIO AM<small>YOUR PERSONAL PRESS</small></span></a
+      >
+      <div class="header-actions">
+        <span id="save-state">Opening studio…</span
+        ><button
+          id="undo"
+          class="icon-btn"
+          aria-label="Undo change"
+          title="Undo"
+        >
+          ↶</button
+        ><button
+          id="redo"
+          class="icon-btn"
+          aria-label="Redo change"
+          title="Redo"
+        >
+          ↷</button
+        ><button id="save" class="primary">Save edition</button
+        ><button id="signout" class="quiet" hidden>Sign out</button>
+      </div>
+    </header>
+    <aside id="public-demo-note" class="demo-banner" hidden>
+      <span
+        ><b>Take the studio for a spin.</b> Fictional content. Drafts stay in
+        this tab and reset on reload.</span
+      >
+      <a href="/morning-edition-source.zip" download>Download the kit ↗</a>
+    </aside>
+    <div id="login" hidden>
+      <form id="login-form">
+        <p class="eyebrow">YOUR PRIVATE PRINT ROOM</p>
+        <h1>Good morning.</h1>
+        <p>Enter your owner access key to open your edition.</p>
+        <label
+          >Access key<input
+            type="password"
+            id="access-key"
+            autocomplete="current-password"
+            required /></label
+        ><button class="primary">Open my studio →</button>
+      </form>
+    </div>
+    <main id="app" hidden>
+      <div class="studio-heading">
+        <div>
+          <p class="eyebrow">YOUR DAILY FIELD REPORT</p>
+          <h1>Your day. <br /><em>In print.</em></h1>
+          <p>
+            A paper with a purpose. Your priorities, your sources, your point of
+            view.
+          </p>
+        </div>
+        <div class="heading-aside">
+          <span class="edition-stamp"
+            >PERSONAL PRESS<br /><b>EST. TODAY</b></span
+          ><button id="print" class="secondary" disabled>Print / PDF ↗</button>
+        </div>
+      </div>
+      <div class="mobile-switch">
+        <button data-view="edit" class="active">Edit edition</button
+        ><button data-view="preview">Preview paper</button>
+      </div>
+      <div class="workspace" data-view="edit">
+        <aside class="editor">
+          <nav class="tabs" aria-label="Studio panels">
+            <button data-tab="sections" class="active">Sections</button
+            ><button data-tab="sources">Sources</button
+            ><button data-tab="style">Style</button
+            ><button data-tab="delivery">Delivery</button>
+          </nav>
+          <div id="panel" class="panel" tabindex="-1"></div>
+          <div class="editor-footer">
+            <span class="status-dot"></span
+            ><span id="environment">Private edition studio</span>
+          </div>
+        </aside>
+        <section
+          id="preview-area"
+          class="preview-area"
+          aria-label="Newspaper preview"
+        >
+          <div class="preview-toolbar">
+            <div>
+              <span class="eyebrow">THE PRINT DESK</span>
+              <h2 id="proof-title">Your morning paper</h2>
+            </div>
+            <button id="expand-proof" class="quiet" aria-expanded="false">
+              Expand proof ↗
+            </button>
+            <label class="sample-switch"
+              ><input type="checkbox" id="demo" checked /> Sample data</label
+            >
+          </div>
+          <div class="proof-stats" id="proof-stats"></div>
+          <div id="paper-stage" class="paper-stage">
+            <div id="paper-wrap" class="paper-wrap">
+              <iframe
+                id="preview"
+                title="Your newspaper preview"
+                sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+              ></iframe>
+            </div>
+          </div>
+          <div class="preview-caption">
+            <span id="preview-caption">Fictional sample content</span
+            ><span id="zoom-label"></span>
+          </div>
+          <div id="source-warning" class="source-warning" hidden></div>
+        </section>
+      </div>
+    </main>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <input
+      type="file"
+      id="config-file"
+      accept="application/json,.json"
+      hidden
+    /><input
+      type="file"
+      id="feed-file"
+      accept="application/json,.json"
+      hidden
+    />
+  </body>
+</html>

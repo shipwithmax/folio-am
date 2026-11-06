@@ -1,0 +1,25 @@
+/* Folio AM studio identity; editor behavior and newspaper styles are unchanged. */
+body {
+  background: #f4f3ee;
+  color: #242720;
+}
+.app-header {
+  background: #f9f8f2;
+}
+.brand-icon {
+  background: #ca4926;
+  color: #fffaf0;
+  font-family: Georgia, serif;
+}
+.studio-heading h1 {
+  color: #242720;
+}
+.studio-heading h1 em {
+  color: #ca4926;
+}
+.preview-area {
+  background-color: #e8e8df;
+}
+.demo-banner {
+  background: #eeede4;
+}

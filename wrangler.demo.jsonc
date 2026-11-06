@@ -1,0 +1,8 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "maxship-morning-edition-demo",
+  "compatibility_date": "2026-10-01",
+  "assets": { "directory": "work/public-demo" },
+  "workers_dev": true,
+  "observability": { "enabled": false },
+}
